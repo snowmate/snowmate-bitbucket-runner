@@ -38,7 +38,7 @@ fi
 ##### Cloning previous branch #####
 cd $TEMP_DIR
 #git clone -b $BITBUCKET_PR_DESTINATION_BRANCH $BITBUCKET_GIT_SSH_ORIGIN
-git clone -b $BITBUCKET_PR_DESTINATION_BRANCH https://x-token-auth:$ZZZZ${BITBUCKET_GIT_SSH_ORIGIN:3}
+git clone -b $BITBUCKET_PR_DESTINATION_BRANCH "https://x-token-auth:$ZZZZ${BITBUCKET_GIT_SSH_ORIGIN:3}"
 
 
 cd $BITBUCKET_REPO_SLUG
