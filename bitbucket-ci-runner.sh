@@ -67,7 +67,7 @@ if [ -n "$SNOWMATE_ACCESS_TOKEN" ]; then
         apt-get install jq --assume-yes
         markdown_content=$(cat $SNOWMATE_REPORT_FILE_PATH | jq -s -R .)
         echo $PULL_REQUESTS_COMMENTS_API_URL
-        curl --request POST --url $PULL_REQUESTS_COMMENTS_API_URL --header 'Content-Type: application/json' --header 'Authorization: Bearer $SNOWMATE_GITLAB_GROUP_TOKEN' --data "{ \"content\": { \"markup\": $markdown_content } }"
+        curl --request POST --url $PULL_REQUESTS_COMMENTS_API_URL --header "Content-Type: application/json" --header "Authorization: Bearer $SNOWMATE_ACCESS_TOKEN" --data "{ \"content\": { \"markup\": $markdown_content } }"
     else
         echo "Snowmate result file was not created, can not create a comment on the pull request"
     fi
