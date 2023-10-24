@@ -37,9 +37,6 @@ pip3 install -i "https://$SNOWMATE_CLIENT_ID:$SNOWMATE_SECRET_KEY@pypi.dev.snowm
 
 ##### Cloning previous branch #####
 cd $TEMP_DIR
-#git clone -b $BITBUCKET_PR_DESTINATION_BRANCH $BITBUCKET_GIT_SSH_ORIGIN
-#git clone -b $BITBUCKET_PR_DESTINATION_BRANCH "https://x-token-auth:$ZZZZ${BITBUCKET_GIT_SSH_ORIGIN:3}"
-#git clone -b $BITBUCKET_PR_DESTINATION_BRANCH https://x-token-auth@bitbucket.org/$BITBUCKET_WORKSPACE/$BITBUCKET_REPO_SLUG.git
 git clone -b $BITBUCKET_PR_DESTINATION_BRANCH https://x-token-auth:$SNOWMATE_ACCESS_TOKEN@bitbucket.org/$BITBUCKET_WORKSPACE/$BITBUCKET_REPO_SLUG.git
 
 
@@ -55,7 +52,6 @@ if [ "$PROJECT_PATH" != "." ]; then
 fi
 
 cd $FEATURE_PROJECT_PATH
-rm -rf /tmp/snowmate_runner_virtual_environment
 set +e # Disable exit on error
 snowmate_runner run --debug-mode --project-id $PROJECT_ID --client-id $SNOWMATE_CLIENT_ID --secret-key $SNOWMATE_SECRET_KEY --workflow-run-id 1234 --cloned-repo-dir $BASELINE_PROJECT_PATH --project-root-path $FEATURE_PROJECT_PATH --details-url $SNOWMATE_APP_URL/regressions/$PROJECT_ID/1234 --pull-request-number $BITBUCKET_PR_ID --api-url $SNOWMATE_API_URL --auth-url $SNOWMATE_AUTH_URL --pypi-url $SNOWMATE_PYPI_URL; snowmate_runner_status=$?
 set -e # Re-enable exit on error
