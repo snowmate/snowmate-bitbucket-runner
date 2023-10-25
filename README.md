@@ -26,7 +26,7 @@ pipelines:
             - BASH_SCRIPT_PATH="$BASH_SCRIPT_FOLDER/bitbucket-ci-runner.sh"
 
             ##### Fetching Snowmate's Bash script for running tests #####
-            - git clone -b feature/effie/initial-commit $SNOWMATE_CI_SCRIPT_URL $BASH_SCRIPT_FOLDER
+            - git clone $SNOWMATE_CI_SCRIPT_URL $BASH_SCRIPT_FOLDER
             - |
               chmod +x $BASH_SCRIPT_PATH
               "$BASH_SCRIPT_PATH" $SNOWMATE_PROJECT_ID $SNOWMATE_PROJECT_PATH $TEMP_DIR $FEATURE_PROJECT_PATH
