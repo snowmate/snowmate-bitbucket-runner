@@ -2,7 +2,7 @@
 This is a Bash script for running Snowmate's tests in Bitbucket Pipeline.
 
 ## Add Snowmate's tests execution step in the pipeline
-Add the Snowmate test run step in your project's `bitbucket-pipelines.yml` file:
+Add Snowmate's run step in your project's `bitbucket-pipelines.yml` file:
 
 ```yml
 image: python:3.10
@@ -13,6 +13,9 @@ pipelines:
       - step:
           name: Run Snowmate tests
           script:
+            ##### Installing requirements #####
+            - pip3 install -r <your_requirements_file> # Or replace with your project's necessary installation steps.
+
             - SNOWMATE_PROJECT_ID="" # Replace this with the project_id you have created on our website.
             - SNOWMATE_PROJECT_PATH="." # If this repo is not a monorepo, leave it as ".", otherwise, replace it with the relative path of the relevant service, e.g., "worker".
             - FEATURE_PROJECT_PATH=$(pwd)
